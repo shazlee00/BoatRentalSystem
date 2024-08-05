@@ -12,7 +12,13 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<ICityRepository, CityRepository>();
+builder.Services.AddScoped<ICountryRepository, CountryRepository>();
+builder.Services.AddScoped<IPackageRepository, PackageRepository>();
+builder.Services.AddScoped<IAdditionRepository, AdditionRepository>();
 builder.Services.AddScoped<CityService>();
+builder.Services.AddScoped<CountryService>();
+builder.Services.AddScoped<PackageService>();
+builder.Services.AddScoped<AdditionService>();
 
 
 var app = builder.Build();
