@@ -1,6 +1,9 @@
+using BoatRentalSystem.API.Profiles;
 using BoatRentalSystem.Application;
 using BoatRentalSystem.Core.Interfaces;
 using BoatRentalSystem.Infrastructure;
+using BoatRentalSystem.Infrastructure.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +22,13 @@ builder.Services.AddScoped<CityService>();
 builder.Services.AddScoped<CountryService>();
 builder.Services.AddScoped<PackageService>();
 builder.Services.AddScoped<AdditionService>();
+
+builder.Services.AddAutoMapper(typeof(MappingProfile));
+
+
+builder.Services.AddDbContext<ApplicationDbContext>(
+    options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
+    );
 
 
 var app = builder.Build();
