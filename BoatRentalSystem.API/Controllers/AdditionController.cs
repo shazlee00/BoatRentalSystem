@@ -2,7 +2,7 @@
 {
     using AutoMapper;
     using BoatRentalSystem.API.ViewModels;
-    using BoatRentalSystem.Application;
+    using BoatRentalSystem.Application.Services;
     using BoatRentalSystem.Core.Entities;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;

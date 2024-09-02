@@ -1,4 +1,4 @@
-﻿namespace BoatSystem.Application
+﻿namespace BoatRentalSystem.Application.Services
 {
     using BoatSystem.Core.Interfaces;
     using BoatSystem.Core.Models;

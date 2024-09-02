@@ -1,4 +1,4 @@
-﻿namespace BoatRentalSystem.Application
+﻿namespace BoatRentalSystem.Application.Services
 {
     using BoatRentalSystem.Core.Entities;
     using BoatRentalSystem.Core.Interfaces;
@@ -28,7 +28,7 @@
 
         public Task UpdateAddition(Addition addition)
         {
-            return _additionRepository.UpdateAsync(addition.Id,addition);
+            return _additionRepository.UpdateAsync(addition.Id, addition);
         }
 
         public Task DeleteAddition(int id)

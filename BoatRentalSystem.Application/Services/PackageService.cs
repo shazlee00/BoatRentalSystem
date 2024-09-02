@@ -1,4 +1,4 @@
-﻿namespace BoatRentalSystem.Application
+﻿namespace BoatRentalSystem.Application.Services
 {
     using BoatRentalSystem.Core.Entities;
     using BoatRentalSystem.Core.Interfaces;
@@ -28,7 +28,7 @@
 
         public Task UpdatePackage(Package package)
         {
-            return _packageRepository.UpdateAsync(package.Id,package);
+            return _packageRepository.UpdateAsync(package.Id, package);
         }
 
         public Task DeletePackage(int id)

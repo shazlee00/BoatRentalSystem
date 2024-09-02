@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BoatRentalSystem.API.ViewModels;
+using BoatRentalSystem.Application.City.ViewModels;
 using BoatRentalSystem.Core.Entities;
 
 namespace BoatRentalSystem.API.Profiles
@@ -10,6 +11,8 @@ namespace BoatRentalSystem.API.Profiles
         {
             CreateMap<City, CityViewModel>().ReverseMap();
             CreateMap<City, AddCityViewModel>().ReverseMap();
+            CreateMap<City, CityDto>().ReverseMap();
+            CreateMap<City, AddCityDto>().ReverseMap();
 
             CreateMap<Country, CountryViewModel>().ReverseMap();
             CreateMap<Country, AddCountryViewModel>().ReverseMap();

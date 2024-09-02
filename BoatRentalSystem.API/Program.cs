@@ -1,9 +1,11 @@
 using BoatRentalSystem.API.Profiles;
 using BoatRentalSystem.Application;
+using BoatRentalSystem.Application.City.Query;
+using BoatRentalSystem.Application.Services;
+using BoatRentalSystem.Core.Entities;
 using BoatRentalSystem.Core.Interfaces;
 using BoatRentalSystem.Infrastructure;
 using BoatRentalSystem.Infrastructure.Repositories;
-using BoatSystem.Application;
 using BoatSystem.Core.Interfaces;
 using BoatSystem.Core.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -12,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Serilog;
+using System.Reflection;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,12 +24,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-//builder.Services.AddSwaggerGen(options =>
-//{
-//    options.SwaggerDoc("user", new OpenApiInfo { Title = "User Api", Version = "v1" });
-//    options.SwaggerDoc("admin", new OpenApiInfo { Title = "Admin Api", Version = "v1" });
-//});
+//builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc("user", new OpenApiInfo { Title = "User Api", Version = "v1" });
+    options.SwaggerDoc("admin", new OpenApiInfo { Title = "Admin Api", Version = "v1" });
+});
 
 
 builder.Services.AddScoped<ICityRepository, CityRepository>();
@@ -52,6 +55,17 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
 builder.Services.AddScoped<IAuthService, AuthService>();
 
 
+builder.Services.AddMediatR(c =>
+{
+    c.RegisterServicesFromAssemblies(
+        Assembly.GetAssembly(typeof(ListCitiesQuery)),
+        Assembly.GetAssembly(typeof(City))
+        );
+});
+
+
+
+
 Log.Logger = new LoggerConfiguration()
     .ReadFrom.Configuration(builder.Configuration)
     .CreateLogger();
@@ -73,7 +87,7 @@ builder.Services.AddAuthentication(options =>
    .AddJwtBearer(o =>
    {
        o.RequireHttpsMetadata = false;
-       o.SaveToken = false;
+       o.SaveToken = true;
        o.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
        {
            ValidateIssuerSigningKey = true,
@@ -88,10 +102,6 @@ builder.Services.AddAuthentication(options =>
    });
 
 
-
-
-
-
 builder.Services.AddAuthorization();
 
 var app = builder.Build();
@@ -100,8 +110,12 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
-        
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint($"/swagger/{SwaggerDocsConstant.Admin}/swagger.json", "Admin Api");
+        c.SwaggerEndpoint($"/swagger/{SwaggerDocsConstant.User}/swagger.json", "User Api");
+    });
+
 }
 
 app.UseSerilogRequestLogging();
