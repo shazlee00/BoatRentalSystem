@@ -6,6 +6,7 @@
     public static class SwaggerDocsConstant
     {
         public const string Admin = "admin";
+        public const string Owner = "Owner";
         public const string User = "user";
     }
 
@@ -33,6 +34,14 @@
         public string Password { get; set; }
     }
 
+    public class CustomerRegisterModel
+    {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string UserName { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+    }
 
     public class TokenRequestModel
     {

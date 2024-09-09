@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using BoatRentalSystem.API.ViewModels;
+using BoatRentalSystem.Application.Boat.ViewModels;
 using BoatRentalSystem.Application.City.ViewModels;
+using BoatRentalSystem.Application.Trip.ViewModels;
 using BoatRentalSystem.Core.Entities;
 
 namespace BoatRentalSystem.API.Profiles
@@ -23,6 +25,23 @@ namespace BoatRentalSystem.API.Profiles
 
             CreateMap<Addition, AdditionViewModel>().ReverseMap();
             CreateMap<Addition, AddAdditionViewModel>().ReverseMap();
+
+
+            CreateMap<Boat, BoatDto>().
+                ForMember(dest => dest.BoatStatus, opt => opt.MapFrom(src => src.Status.ToString())).ReverseMap();
+            CreateMap<Boat, AddBoatDto>().ReverseMap();
+            CreateMap<Boat, UpdateBoatDto>().ReverseMap();
+
+
+
+
+            CreateMap<Trip, TripDto>().
+               ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status.ToString())).ReverseMap();
+            CreateMap<Trip, AddTripDto>().ReverseMap();
+            CreateMap<Trip, UpdateTripDto>().ReverseMap();
+
+
+
 
 
 

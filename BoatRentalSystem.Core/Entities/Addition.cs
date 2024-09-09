@@ -15,5 +15,20 @@ namespace BoatRentalSystem.Core.Entities
         {
             Name = name;
         }
+
+        public int OwnerId { get; set; }
+        public Owner Owner { get; set; }  
+        public string Description { get; set; } 
+        public double Price { get; set; }        
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
+        public DateTime? UpdatedAt { get; set; }
+
+        public List<Reservation> Reservations { get; set; } = new List<Reservation>();
+        public List<ReservationAddition> ReservationAdditions { get; set; } = new List<ReservationAddition>();
+
+
+
+
+
     }
 }

@@ -5,6 +5,7 @@ using BoatRentalSystem.Application.Services;
 using BoatRentalSystem.Core.Entities;
 using BoatRentalSystem.Core.Interfaces;
 using BoatRentalSystem.Infrastructure;
+using BoatRentalSystem.Infrastructure.Configurations;
 using BoatRentalSystem.Infrastructure.Repositories;
 using BoatSystem.Core.Interfaces;
 using BoatSystem.Core.Models;
@@ -36,10 +37,18 @@ builder.Services.AddScoped<ICityRepository, CityRepository>();
 builder.Services.AddScoped<ICountryRepository, CountryRepository>();
 builder.Services.AddScoped<IPackageRepository, PackageRepository>();
 builder.Services.AddScoped<IAdditionRepository, AdditionRepository>();
+builder.Services.AddScoped<IOwnerRepository, OwnerRepository>();
+builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+builder.Services.AddScoped<IBoatRepository, BoatRepository>();
+builder.Services.AddScoped<ITripRepository, TripRepository>();
+builder.Services.AddScoped<IReservationRepository, ReservationRepository>();
 builder.Services.AddScoped<CityService>();
 builder.Services.AddScoped<CountryService>();
 builder.Services.AddScoped<PackageService>();
 builder.Services.AddScoped<AdditionService>();
+builder.Services.AddScoped<BoatService>();
+builder.Services.AddScoped<TripService>();
+builder.Services.AddScoped<ReservationService>();
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 

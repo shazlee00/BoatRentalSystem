@@ -2,6 +2,7 @@
 {
     using BoatRentalSystem.Core.Entities;
     using BoatRentalSystem.Core.Interfaces;
+    using BoatRentalSystem.Infrastructure.Configurations;
     using System.Collections.Generic;
     using System.Threading.Tasks;
 

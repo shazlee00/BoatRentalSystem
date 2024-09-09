@@ -4,6 +4,7 @@ using BoatRentalSystem.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BoatRentalSystem.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240903210604_AddCustomer")]
+    partial class AddCustomer
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,73 +36,14 @@ namespace BoatRentalSystem.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int>("OwnerId")
-                        .HasColumnType("int");
-
-                    b.Property<double>("Price")
-                        .HasColumnType("float");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("OwnerId");
-
                     b.ToTable("Additions", (string)null);
-                });
-
-            modelBuilder.Entity("BoatRentalSystem.Core.Entities.Boat", b =>
-                {
-                    b.Property<int>("BoatId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BoatId"));
-
-                    b.Property<int>("Capacity")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<int>("OwnerId")
-                        .HasColumnType("int");
-
-                    b.Property<double>("ReservationPrice")
-                        .HasColumnType("float");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("BoatId");
-
-                    b.HasIndex("OwnerId");
-
-                    b.ToTable("Boats", (string)null);
                 });
 
             modelBuilder.Entity("BoatRentalSystem.Core.Entities.City", b =>
@@ -166,18 +110,16 @@ namespace BoatRentalSystem.Infrastructure.Migrations
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("UserId")
+                    b.Property<string>("UserID")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("WalletBalance")
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Customers", (string)null);
+                    b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("BoatRentalSystem.Core.Entities.Member", b =>
@@ -255,133 +197,6 @@ namespace BoatRentalSystem.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Packages", (string)null);
-                });
-
-            modelBuilder.Entity("BoatRentalSystem.Core.Entities.Reservation", b =>
-                {
-                    b.Property<int>("ReservationId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ReservationId"));
-
-                    b.Property<int>("BoatId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("CanceledAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("NumberOfPeople")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("ReservationDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
-
-                    b.Property<double>("TotalPrice")
-                        .HasColumnType("float");
-
-                    b.Property<int>("TripId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("ReservationId");
-
-                    b.HasIndex("BoatId");
-
-                    b.HasIndex("CustomerId");
-
-                    b.HasIndex("TripId");
-
-                    b.ToTable("Reservations");
-                });
-
-            modelBuilder.Entity("BoatRentalSystem.Core.Entities.ReservationAddition", b =>
-                {
-                    b.Property<int>("AdditionId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ReservationId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.Property<double>("TotalPrice")
-                        .HasColumnType("float");
-
-                    b.HasKey("AdditionId", "ReservationId");
-
-                    b.HasIndex("ReservationId");
-
-                    b.ToTable("ReservationAdditions", (string)null);
-                });
-
-            modelBuilder.Entity("BoatRentalSystem.Core.Entities.Trip", b =>
-                {
-                    b.Property<int>("TripId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TripId"));
-
-                    b.Property<int>("BoatId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CancellationDeadline")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
-
-                    b.Property<int>("MaxPeople")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<int>("OwnerId")
-                        .HasColumnType("int");
-
-                    b.Property<double>("PricePerPerson")
-                        .HasColumnType("float");
-
-                    b.Property<DateTime?>("StartedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("TripId");
-
-                    b.HasIndex("BoatId");
-
-                    b.HasIndex("OwnerId");
-
-                    b.ToTable("Trips", (string)null);
                 });
 
             modelBuilder.Entity("BoatSystem.Core.Models.ApplicationUser", b =>
@@ -496,7 +311,7 @@ namespace BoatRentalSystem.Infrastructure.Migrations
                         },
                         new
                         {
-                            Id = "5a96f68c-c551-45f8-ad00-d4ae56c4afd5",
+                            Id = "b3b7154a-29d4-4a80-bb95-c755b364bbe9",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         });
@@ -608,37 +423,6 @@ namespace BoatRentalSystem.Infrastructure.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("BoatRentalSystem.Core.Entities.Addition", b =>
-                {
-                    b.HasOne("BoatRentalSystem.Core.Entities.Owner", "Owner")
-                        .WithMany("Additions")
-                        .HasForeignKey("OwnerId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Owner");
-                });
-
-            modelBuilder.Entity("BoatRentalSystem.Core.Entities.Boat", b =>
-                {
-                    b.HasOne("BoatRentalSystem.Core.Entities.Owner", "Owner")
-                        .WithMany("Boats")
-                        .HasForeignKey("OwnerId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Owner");
-                });
-
-            modelBuilder.Entity("BoatRentalSystem.Core.Entities.Customer", b =>
-                {
-                    b.HasOne("BoatSystem.Core.Models.ApplicationUser", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("BoatRentalSystem.Core.Entities.Member", b =>
                 {
                     b.HasOne("BoatSystem.Core.Models.ApplicationUser", null)
@@ -655,71 +439,6 @@ namespace BoatRentalSystem.Infrastructure.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("BoatRentalSystem.Core.Entities.Reservation", b =>
-                {
-                    b.HasOne("BoatRentalSystem.Core.Entities.Boat", "Boat")
-                        .WithMany("Reservations")
-                        .HasForeignKey("BoatId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("BoatRentalSystem.Core.Entities.Customer", "Customer")
-                        .WithMany("Reservations")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("BoatRentalSystem.Core.Entities.Trip", "Trip")
-                        .WithMany("Reservations")
-                        .HasForeignKey("TripId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Boat");
-
-                    b.Navigation("Customer");
-
-                    b.Navigation("Trip");
-                });
-
-            modelBuilder.Entity("BoatRentalSystem.Core.Entities.ReservationAddition", b =>
-                {
-                    b.HasOne("BoatRentalSystem.Core.Entities.Addition", "Addition")
-                        .WithMany("ReservationAdditions")
-                        .HasForeignKey("AdditionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("BoatRentalSystem.Core.Entities.Reservation", "Reservation")
-                        .WithMany("ReservationAdditions")
-                        .HasForeignKey("ReservationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Addition");
-
-                    b.Navigation("Reservation");
-                });
-
-            modelBuilder.Entity("BoatRentalSystem.Core.Entities.Trip", b =>
-                {
-                    b.HasOne("BoatRentalSystem.Core.Entities.Boat", "Boat")
-                        .WithMany("Trips")
-                        .HasForeignKey("BoatId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("BoatRentalSystem.Core.Entities.Owner", "Owner")
-                        .WithMany("Trips")
-                        .HasForeignKey("OwnerId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Boat");
-
-                    b.Navigation("Owner");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -771,42 +490,6 @@ namespace BoatRentalSystem.Infrastructure.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("BoatRentalSystem.Core.Entities.Addition", b =>
-                {
-                    b.Navigation("ReservationAdditions");
-                });
-
-            modelBuilder.Entity("BoatRentalSystem.Core.Entities.Boat", b =>
-                {
-                    b.Navigation("Reservations");
-
-                    b.Navigation("Trips");
-                });
-
-            modelBuilder.Entity("BoatRentalSystem.Core.Entities.Customer", b =>
-                {
-                    b.Navigation("Reservations");
-                });
-
-            modelBuilder.Entity("BoatRentalSystem.Core.Entities.Owner", b =>
-                {
-                    b.Navigation("Additions");
-
-                    b.Navigation("Boats");
-
-                    b.Navigation("Trips");
-                });
-
-            modelBuilder.Entity("BoatRentalSystem.Core.Entities.Reservation", b =>
-                {
-                    b.Navigation("ReservationAdditions");
-                });
-
-            modelBuilder.Entity("BoatRentalSystem.Core.Entities.Trip", b =>
-                {
-                    b.Navigation("Reservations");
                 });
 #pragma warning restore 612, 618
         }

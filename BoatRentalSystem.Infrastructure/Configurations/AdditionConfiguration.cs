@@ -12,6 +12,10 @@ namespace BoatRentalSystem.Infrastructure
             builder.ToTable("Additions");
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Name).IsRequired().HasMaxLength(50);
+
+            builder.Property(x => x.Description).HasMaxLength(500);
+            builder.Property(x => x.UpdatedAt).IsRequired(false);
+            builder.HasOne(x=>x.Owner).WithMany(x=>x.Additions).HasForeignKey(x=>x.OwnerId).OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

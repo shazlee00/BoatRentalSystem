@@ -1,0 +1,135 @@
+﻿using AutoMapper;
+using BoatRentalSystem.Application.Boat.Command.Add;
+using BoatRentalSystem.Application.Boat.Command.Update;
+using BoatRentalSystem.Application.Boat.Query;
+using BoatRentalSystem.Application.Boat.ViewModels;
+using BoatRentalSystem.Application.Services;
+using BoatRentalSystem.Core.Interfaces;
+using MediatR;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+
+namespace BoatRentalSystem.API.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class OwnerController : ControllerBase
+    {
+        private readonly BoatService _boatService;
+        private readonly IOwnerRepository _ownerRepository;
+        private readonly IMapper _mapper;
+        private readonly IMediator _mediator;
+
+        public OwnerController(BoatService boatService, IMapper mapper, IMediator mediator, IOwnerRepository ownerRepository)
+        {
+            _boatService = boatService;
+            _mapper = mapper;
+            _mediator = mediator;
+            _ownerRepository = ownerRepository;
+
+        }
+
+
+        [HttpGet("{ownerId}/boat")]
+       [Authorize(Roles = "owner")]
+        public async Task<IActionResult> GetBoatsByOwnerId(int ownerId)
+        {
+            var currentownerId = await _ownerRepository.GetIdByUserIDAsync(User.FindFirst(c => c.Type == "uid")?.Value);
+
+            if (currentownerId != ownerId)
+            {
+                return Forbid("You are not authorized to update this boat.");
+            }
+
+            var query = new ListOwnerBoatsQuery(ownerId);
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
+
+
+
+        [HttpGet("{ownerId}/boat/{boatId}")]
+        [Authorize(Roles = "owner")]
+        public async Task<IActionResult> GetBoatById(int ownerId, int boatId)
+        {
+            var currentownerId = await _ownerRepository.GetIdByUserIDAsync(User.FindFirst(c => c.Type == "uid")?.Value);
+            if (currentownerId != ownerId)
+            {
+                return Forbid();
+            }
+            var query = new GetBoatQuery(boatId);
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
+
+
+
+        [HttpPost("{ownerId}/boat")]
+        [Authorize(Roles = "owner")]
+        public async Task<IActionResult> Post(int ownerId, [FromBody] AddBoatCommand command)
+        {
+            var currentownerId = await _ownerRepository.GetIdByUserIDAsync(User.FindFirst(c => c.Type == "uid")?.Value);
+            if (currentownerId != ownerId)
+            {
+                return Forbid();
+            }
+            command.Boat.OwnerId = ownerId;
+            var result = await _mediator.Send(command);
+            return Ok(result);
+        }
+
+
+        [HttpPut("{OwnerId}/boat")]
+        [Authorize(Roles = "owner")]
+        public async Task<IActionResult> UpdateBoatStatus(int ownerId,[FromBody] UpdateBoatDto boat)
+        {
+
+
+            var command = new UpdateBoatCommand(boat,ownerId);
+
+            var currentownerId = await _ownerRepository.GetIdByUserIDAsync(User.FindFirst(c => c.Type == "uid")?.Value);
+
+            if (currentownerId != ownerId)
+            {
+                return Forbid();
+            }
+
+            command.UpdateBoatDto.OwnerId = ownerId;
+
+
+            var result = await _mediator.Send(command);
+            if (result == null)
+            {
+                return BadRequest();
+            }
+            return Ok(result);
+        }
+        [HttpDelete("{ownerId}/boat")]
+        [Authorize(Roles = "owner")]
+        public async Task<IActionResult> DeleteBoat(int ownerId,int boatId)
+        {
+            var currentownerId = await _ownerRepository.GetIdByUserIDAsync(User.FindFirst(c => c.Type == "uid")?.Value);
+            var boat = await _boatService.GetBoatById(boatId);
+            if (currentownerId != ownerId)
+            {
+                return Forbid();
+            }
+
+            if (boat == null)
+            {
+                return NotFound();
+            }
+
+            if (boat.OwnerId != ownerId)
+            {
+                return Forbid();
+            }
+            await _boatService.DeleteBoat(boatId);
+            return NoContent();
+        }
+
+
+
+    }
+}
