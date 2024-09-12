@@ -11,17 +11,24 @@ namespace BoatRentalSystem.Infrastructure.Repositories
 {
     public class CustomerRepository : BaseRepository<Customer>, ICustomerRepository
     {
-        private readonly ApplicationDbContext _context;
+        private readonly ApplicationDbContext _dbContext;
 
         public CustomerRepository(ApplicationDbContext dbContext) : base(dbContext)
         {
-            _context = dbContext;
+            _dbContext = dbContext;
         }
 
 
         public Task<Customer> GetByUserIdAsync(string userId)
         {
-            return _context.Customers.FirstOrDefaultAsync(e => e.UserId == userId);
+            return _dbContext.Customers.FirstOrDefaultAsync(e => e.UserId == userId);
+        }
+
+        public async Task<int> GetIdByUserIDAsync(string userId)
+        {
+            var user = await _dbContext.Customers.FirstOrDefaultAsync(e => e.UserId == userId);
+
+            return user.Id;
         }
     }
 }

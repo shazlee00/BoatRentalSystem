@@ -31,11 +31,19 @@ namespace BoatRentalSystem.API.Controllers
         }
 
 
-        [HttpGet]
+       [HttpGet]
        [Authorize]
         public async Task<IActionResult> Get()
         {
             var query = new ListTripsQuery();
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
+        [HttpGet("available-trips")]
+        [Authorize]
+        public async Task<IActionResult> GetAvailableTrips()
+        {
+            var query = new ListAvailbeTripsQuery();
             var result = await _mediator.Send(query);
             return Ok(result);
         }
@@ -68,7 +76,7 @@ namespace BoatRentalSystem.API.Controllers
         }
 
 
-        [HttpDelete]
+       [HttpDelete]
        [Authorize(Roles = "owner")]
         public async Task<IActionResult> Delete(int id)
         {

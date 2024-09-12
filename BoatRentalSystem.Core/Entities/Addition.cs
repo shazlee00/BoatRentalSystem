@@ -23,12 +23,6 @@ namespace BoatRentalSystem.Core.Entities
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime? UpdatedAt { get; set; }
 
-        public List<Reservation> Reservations { get; set; } = new List<Reservation>();
-        public List<ReservationAddition> ReservationAdditions { get; set; } = new List<ReservationAddition>();
-
-
-
-
 
     }
 }

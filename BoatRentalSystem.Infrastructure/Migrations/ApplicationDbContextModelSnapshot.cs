@@ -49,6 +49,9 @@ namespace BoatRentalSystem.Infrastructure.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
+                    b.Property<int?>("ReservationId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
 
@@ -56,7 +59,38 @@ namespace BoatRentalSystem.Infrastructure.Migrations
 
                     b.HasIndex("OwnerId");
 
+                    b.HasIndex("ReservationId");
+
                     b.ToTable("Additions", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedAt = new DateTime(2024, 9, 12, 2, 22, 51, 119, DateTimeKind.Local).AddTicks(7814),
+                            Description = "Includes a variety of local dishes for your trip.",
+                            Name = "Lunch Package",
+                            OwnerId = 2,
+                            Price = 15.0
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedAt = new DateTime(2024, 9, 12, 2, 22, 51, 119, DateTimeKind.Local).AddTicks(7818),
+                            Description = "High-quality snorkeling gear for underwater exploration.",
+                            Name = "Snorkeling Gear",
+                            OwnerId = 2,
+                            Price = 25.0
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedAt = new DateTime(2024, 9, 12, 2, 22, 51, 119, DateTimeKind.Local).AddTicks(7822),
+                            Description = "Full fishing kit for a day of fishing on the boat.",
+                            Name = "Fishing Equipment",
+                            OwnerId = 2,
+                            Price = 30.0
+                        });
                 });
 
             modelBuilder.Entity("BoatRentalSystem.Core.Entities.Boat", b =>
@@ -100,6 +134,113 @@ namespace BoatRentalSystem.Infrastructure.Migrations
                     b.HasIndex("OwnerId");
 
                     b.ToTable("Boats", (string)null);
+                });
+
+            modelBuilder.Entity("BoatRentalSystem.Core.Entities.BoatBooking", b =>
+                {
+                    b.Property<int>("BoatBookingId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BoatBookingId"));
+
+                    b.Property<int>("BoatId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("BookingDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("CanceledAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DurationHours")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("BoatBookingId");
+
+                    b.HasIndex("BoatId");
+
+                    b.HasIndex("CustomerId");
+
+                    b.ToTable("BoatBookings", (string)null);
+                });
+
+            modelBuilder.Entity("BoatRentalSystem.Core.Entities.BookingAddition", b =>
+                {
+                    b.Property<int>("BookingAdditionId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BookingAdditionId"));
+
+                    b.Property<int>("AdditionId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("BoatBookingId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("BookingAdditionId");
+
+                    b.HasIndex("AdditionId");
+
+                    b.HasIndex("BoatBookingId");
+
+                    b.ToTable("BookingAdditions", (string)null);
+                });
+
+            modelBuilder.Entity("BoatRentalSystem.Core.Entities.Cancellation", b =>
+                {
+                    b.Property<int>("CancellationId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CancellationId"));
+
+                    b.Property<int?>("BoatBookingId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CancellationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("RefundAmount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int?>("ReservationId")
+                        .HasColumnType("int");
+
+                    b.HasKey("CancellationId");
+
+                    b.HasIndex("BoatBookingId");
+
+                    b.HasIndex("CustomerId");
+
+                    b.HasIndex("ReservationId");
+
+                    b.ToTable("Cancellations", (string)null);
                 });
 
             modelBuilder.Entity("BoatRentalSystem.Core.Entities.City", b =>
@@ -286,9 +427,6 @@ namespace BoatRentalSystem.Infrastructure.Migrations
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
-                    b.Property<double>("TotalPrice")
-                        .HasColumnType("float");
-
                     b.Property<int>("TripId")
                         .HasColumnType("int");
 
@@ -303,15 +441,18 @@ namespace BoatRentalSystem.Infrastructure.Migrations
 
                     b.HasIndex("TripId");
 
-                    b.ToTable("Reservations");
+                    b.ToTable("Reservations", (string)null);
                 });
 
             modelBuilder.Entity("BoatRentalSystem.Core.Entities.ReservationAddition", b =>
                 {
-                    b.Property<int>("AdditionId")
+                    b.Property<int>("ReservationAdditionId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("ReservationId")
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ReservationAdditionId"));
+
+                    b.Property<int>("AdditionId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
@@ -320,10 +461,12 @@ namespace BoatRentalSystem.Infrastructure.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
-                    b.Property<double>("TotalPrice")
-                        .HasColumnType("float");
+                    b.Property<int>("ReservationId")
+                        .HasColumnType("int");
 
-                    b.HasKey("AdditionId", "ReservationId");
+                    b.HasKey("ReservationAdditionId");
+
+                    b.HasIndex("AdditionId");
 
                     b.HasIndex("ReservationId");
 
@@ -616,6 +759,10 @@ namespace BoatRentalSystem.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("BoatRentalSystem.Core.Entities.Reservation", null)
+                        .WithMany("Additions")
+                        .HasForeignKey("ReservationId");
+
                     b.Navigation("Owner");
                 });
 
@@ -628,6 +775,67 @@ namespace BoatRentalSystem.Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("Owner");
+                });
+
+            modelBuilder.Entity("BoatRentalSystem.Core.Entities.BoatBooking", b =>
+                {
+                    b.HasOne("BoatRentalSystem.Core.Entities.Boat", "Boat")
+                        .WithMany("BoatBookings")
+                        .HasForeignKey("BoatId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BoatRentalSystem.Core.Entities.Customer", "Customer")
+                        .WithMany("BoatBookings")
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Boat");
+
+                    b.Navigation("Customer");
+                });
+
+            modelBuilder.Entity("BoatRentalSystem.Core.Entities.BookingAddition", b =>
+                {
+                    b.HasOne("BoatRentalSystem.Core.Entities.Addition", "Addition")
+                        .WithMany()
+                        .HasForeignKey("AdditionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BoatRentalSystem.Core.Entities.BoatBooking", "BoatBooking")
+                        .WithMany("BookingAdditions")
+                        .HasForeignKey("BoatBookingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Addition");
+
+                    b.Navigation("BoatBooking");
+                });
+
+            modelBuilder.Entity("BoatRentalSystem.Core.Entities.Cancellation", b =>
+                {
+                    b.HasOne("BoatRentalSystem.Core.Entities.BoatBooking", "BoatBooking")
+                        .WithMany()
+                        .HasForeignKey("BoatBookingId");
+
+                    b.HasOne("BoatRentalSystem.Core.Entities.Customer", "Customer")
+                        .WithMany("Cancellations")
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BoatRentalSystem.Core.Entities.Reservation", "Reservation")
+                        .WithMany()
+                        .HasForeignKey("ReservationId");
+
+                    b.Navigation("BoatBooking");
+
+                    b.Navigation("Customer");
+
+                    b.Navigation("Reservation");
                 });
 
             modelBuilder.Entity("BoatRentalSystem.Core.Entities.Customer", b =>
@@ -662,7 +870,7 @@ namespace BoatRentalSystem.Infrastructure.Migrations
                     b.HasOne("BoatRentalSystem.Core.Entities.Boat", "Boat")
                         .WithMany("Reservations")
                         .HasForeignKey("BoatId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("BoatRentalSystem.Core.Entities.Customer", "Customer")
@@ -687,7 +895,7 @@ namespace BoatRentalSystem.Infrastructure.Migrations
             modelBuilder.Entity("BoatRentalSystem.Core.Entities.ReservationAddition", b =>
                 {
                     b.HasOne("BoatRentalSystem.Core.Entities.Addition", "Addition")
-                        .WithMany("ReservationAdditions")
+                        .WithMany()
                         .HasForeignKey("AdditionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -773,20 +981,26 @@ namespace BoatRentalSystem.Infrastructure.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("BoatRentalSystem.Core.Entities.Addition", b =>
-                {
-                    b.Navigation("ReservationAdditions");
-                });
-
             modelBuilder.Entity("BoatRentalSystem.Core.Entities.Boat", b =>
                 {
+                    b.Navigation("BoatBookings");
+
                     b.Navigation("Reservations");
 
                     b.Navigation("Trips");
                 });
 
+            modelBuilder.Entity("BoatRentalSystem.Core.Entities.BoatBooking", b =>
+                {
+                    b.Navigation("BookingAdditions");
+                });
+
             modelBuilder.Entity("BoatRentalSystem.Core.Entities.Customer", b =>
                 {
+                    b.Navigation("BoatBookings");
+
+                    b.Navigation("Cancellations");
+
                     b.Navigation("Reservations");
                 });
 
@@ -801,6 +1015,8 @@ namespace BoatRentalSystem.Infrastructure.Migrations
 
             modelBuilder.Entity("BoatRentalSystem.Core.Entities.Reservation", b =>
                 {
+                    b.Navigation("Additions");
+
                     b.Navigation("ReservationAdditions");
                 });
 

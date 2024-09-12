@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace BoatRentalSystem.Application.Services
 {
+    using BoatRentalSystem.Core.Entities;
     public class ReservationService
     {
         private readonly IReservationRepository _reservationRepository ;
@@ -20,11 +21,13 @@ namespace BoatRentalSystem.Application.Services
 
         public Task<IEnumerable<Reservation>> GetAllReservations()
         {
-            return _reservationRepository.GetAllAsync();
+            //return _reservationRepository.GetAllAsync();
+
+            return _reservationRepository.GetAllReservationAsync();
         }
         public Task<Reservation> GetReservationById(int id)
         {
-            return _reservationRepository.GetByIdAsync(id);
+            return _reservationRepository.GetReservationByIdAsync(id);
 
         }
         public Task AddReservation(Reservation reservation)

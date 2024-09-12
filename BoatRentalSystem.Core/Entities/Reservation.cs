@@ -1,4 +1,7 @@
-﻿namespace BoatRentalSystem.Core.Entities
+﻿using Serilog.Debugging;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace BoatRentalSystem.Core.Entities
 {
     public class Reservation
     {
@@ -10,14 +13,14 @@
 
    
         public int TripId { get; set; }
-        public Trip Trip { get; set; }  
+        public Trip Trip { get; set; }
 
-      
+        [ForeignKey("BoatId")]
         public int BoatId { get; set; }
         public Boat Boat { get; set; }  
 
         public int NumberOfPeople { get; set; } 
-        public double TotalPrice { get; set; }  
+        public double TotalPrice { get => (NumberOfPeople * (Boat?.ReservationPrice ?? 0)) + (ReservationAdditions?.Sum(x => x.TotalPrice) ?? 0); }
 
         public DateTime ReservationDate { get; set; } 
 
@@ -34,8 +37,9 @@
         public DateTime? UpdatedAt { get; set; }
 
     
-        public List<Addition> Additions { get; set; }=new List<Addition>();
+       public List<Addition> Additions { get; }= new List<Addition>();
         public List<ReservationAddition> ReservationAdditions { get; set; }  = new List<ReservationAddition>();
+    
     }
 
  

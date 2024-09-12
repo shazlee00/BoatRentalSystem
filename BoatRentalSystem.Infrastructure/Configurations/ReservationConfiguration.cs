@@ -40,25 +40,17 @@ namespace BoatRentalSystem.Infrastructure.Configurations
                    .HasForeignKey(r => r.TripId)
                    .OnDelete(DeleteBehavior.Restrict);  // Restrict delete to avoid cascading
 
-         
 
-            // Configure many-to-many relationship with Additions through ReservationAdditions
-            builder.HasMany(r => r.Additions)
-                   .WithMany(ra => ra.Reservations)
-                   .UsingEntity<ReservationAddition>(
-                       j => j
-                           .HasOne(ra => ra.Addition)
-                           .WithMany(a => a.ReservationAdditions)
-                           .HasForeignKey(ra => ra.AdditionId),
-                       j => j
-                           .HasOne(ra => ra.Reservation)
-                           .WithMany(r => r.ReservationAdditions)
-                           .HasForeignKey(ra => ra.ReservationId),
-                       j =>
-                       {
-                           j.HasKey(ra => new { ra.AdditionId, ra.ReservationId });
-                           j.ToTable("ReservationAdditions");
-                       });
+            builder.HasOne(r => r.Boat)
+                   .WithMany(b => b.Reservations)
+                   .HasForeignKey(r => r.BoatId)
+                   .OnDelete(DeleteBehavior.Restrict);  // Restrict delete to avoid cascading
+
+
+
+          
+            builder.HasMany(r => r.ReservationAdditions).WithOne(ra => ra.Reservation).OnDelete(DeleteBehavior.Cascade);
+                  
                  
 
 

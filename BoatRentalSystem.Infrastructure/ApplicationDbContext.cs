@@ -35,6 +35,16 @@ namespace BoatRentalSystem.Infrastructure
 
         public DbSet<Reservation> Reservations  { get; set; }
 
+        public DbSet<ReservationAddition> ReservationAdditions  { get; set; }
+
+     
+        
+        public DbSet<BoatBooking> BoatBookings { get; set; }
+
+       public DbSet<BookingAddition> bookingAdditions { get; set; }
+
+        public DbSet<Cancellation> Cancellations { get; set; }
+
         
 
 
@@ -53,9 +63,45 @@ namespace BoatRentalSystem.Infrastructure
             modelBuilder.ApplyConfiguration(new BoatConfiguration());
             modelBuilder.ApplyConfiguration(new TripConfiguration());
             modelBuilder.ApplyConfiguration(new ReservationConfiguration());
-            
 
 
+
+
+            modelBuilder.ApplyConfiguration(new CancellationConfiguration());
+            modelBuilder.ApplyConfiguration(new BoatBookingConfiguration());
+            modelBuilder.ApplyConfiguration(new BookingAdditionConfiguration());
+
+            modelBuilder.ApplyConfiguration(new ReservationAdditionConfiguration());
+
+            modelBuilder.Entity<Addition>().HasData(
+           new Addition
+           {
+               Id = 1,
+               Name = "Lunch Package",
+               OwnerId = 2, 
+               Description = "Includes a variety of local dishes for your trip.",
+               Price = 15.00,
+               CreatedAt = DateTime.Now
+           },
+           new Addition
+           {
+               Id = 2,
+               Name = "Snorkeling Gear",
+               OwnerId = 2, 
+               Description = "High-quality snorkeling gear for underwater exploration.",
+               Price = 25.00,
+               CreatedAt = DateTime.Now
+           },
+           new Addition
+           {
+               Id = 3,
+               Name = "Fishing Equipment",
+               OwnerId = 2, 
+               Description = "Full fishing kit for a day of fishing on the boat.",
+               Price = 30.00,
+               CreatedAt = DateTime.Now
+           }
+       );
 
 
             modelBuilder.Entity<IdentityRole>(entity =>

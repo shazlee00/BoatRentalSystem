@@ -19,11 +19,10 @@ namespace BoatRentalSystem.Core.Entities
         public DateTime CreatedAt { get; set; }=DateTime.Now;
         public DateTime UpdatedAt { get; set; }
 
-
+            
 
         public ICollection<Reservation> Reservations { get; set; }
-
-
-
+        public ICollection<Cancellation> Cancellations { get; set; }
+        public ICollection<BoatBooking> BoatBookings { get; set; }
     }
 }

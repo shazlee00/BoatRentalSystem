@@ -49,15 +49,22 @@ namespace BoatRentalSystem.API.Controllers
         {
             var query = new GetBoatQuery(id);
             var result = await _mediator.Send(query);
+
+            if (result == null)
+            {
+                return NotFound();
+            }
+
             return Ok(result);
         }
 
-        [Authorize]
+       [Authorize]
         [HttpGet("Available")]
         public async Task<IActionResult> GetAvailable()
         {
             var query = new ListAvailbeBoatsQuery();
             var result = await _mediator.Send(query);
+
             return Ok(result);
         }
 
@@ -66,6 +73,12 @@ namespace BoatRentalSystem.API.Controllers
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] AddBoatDto boat)
         {
+
+            if (boat == null )
+            {
+                return BadRequest(ModelState);
+            }
+
             AddBoatCommand command=new AddBoatCommand(boat);
 
             command.Boat.OwnerId= await _ownerRepository.GetIdByUserIDAsync(User.FindFirst(c => c.Type == "uid")?.Value);
@@ -78,6 +91,11 @@ namespace BoatRentalSystem.API.Controllers
         [HttpPost("status")]
         public async Task<ActionResult> UpdateBoatStatus(VerifyBoatCommand command)
         {
+            if (command == null)
+            {
+                return BadRequest();
+            }
+
             var result = await _mediator.Send(command);
             if (result == null)
             {

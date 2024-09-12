@@ -15,6 +15,7 @@ namespace BoatRentalSystem.Infrastructure
 
             builder.Property(x => x.Description).HasMaxLength(500);
             builder.Property(x => x.UpdatedAt).IsRequired(false);
+            
             builder.HasOne(x=>x.Owner).WithMany(x=>x.Additions).HasForeignKey(x=>x.OwnerId).OnDelete(DeleteBehavior.Restrict);
         }
     }

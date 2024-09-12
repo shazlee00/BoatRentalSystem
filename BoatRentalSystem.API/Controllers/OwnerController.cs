@@ -3,6 +3,8 @@ using BoatRentalSystem.Application.Boat.Command.Add;
 using BoatRentalSystem.Application.Boat.Command.Update;
 using BoatRentalSystem.Application.Boat.Query;
 using BoatRentalSystem.Application.Boat.ViewModels;
+using BoatRentalSystem.Application.BoatBooking.Query;
+using BoatRentalSystem.Application.Reservation.Query;
 using BoatRentalSystem.Application.Services;
 using BoatRentalSystem.Core.Interfaces;
 using MediatR;
@@ -127,6 +129,26 @@ namespace BoatRentalSystem.API.Controllers
             }
             await _boatService.DeleteBoat(boatId);
             return NoContent();
+        }
+
+        [HttpGet("Reservation")]
+        [Authorize(Roles = "owner")]
+        public async Task<IActionResult> GetOwnerReservation()
+        {
+            var ownerId = await _ownerRepository.GetIdByUserIDAsync(User.FindFirst(c => c.Type == "uid")?.Value);
+            var query = new ListOwnerReservationQuery(ownerId);
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
+
+        [HttpGet("Booking")]
+        [Authorize(Roles = "owner")]
+        public async Task<IActionResult> GetOwnerBooking()
+        {
+            var ownerId = await _ownerRepository.GetIdByUserIDAsync(User.FindFirst(c => c.Type == "uid")?.Value);
+            var query = new ListOwnerBoatBookingQuery(ownerId);
+            var result = await _mediator.Send(query);
+            return Ok(result);
         }
 
 

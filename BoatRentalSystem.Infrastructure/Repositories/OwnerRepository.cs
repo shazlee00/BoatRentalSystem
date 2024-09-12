@@ -24,7 +24,7 @@ namespace BoatRentalSystem.Infrastructure.Repositories
 
         public async Task<int> GetIdByUserIDAsync(string userId)
         {
-            var user= await _dbContext.Owners.FirstOrDefaultAsync(e => e.UserId == userId);
+            var user = await _dbContext.Owners.FirstOrDefaultAsync(e => e.UserId == userId);
 
             return user.Id;
         }

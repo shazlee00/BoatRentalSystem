@@ -22,7 +22,7 @@
         }
 
         [HttpGet]
-        [Authorize]
+       [Authorize]
         public async Task<ActionResult<IEnumerable<AdditionViewModel>>> Get()
         {
             var addition = await _additionService.GetAllAdditions();

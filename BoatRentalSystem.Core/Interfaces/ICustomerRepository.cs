@@ -10,5 +10,6 @@ namespace BoatRentalSystem.Core.Interfaces
     public interface ICustomerRepository : IBaseRepository<Customer>
     {
         Task<Customer> GetByUserIdAsync(string userId);
+        Task<int> GetIdByUserIDAsync(string userId);
     }
 }

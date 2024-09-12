@@ -9,5 +9,7 @@ namespace BoatRentalSystem.Core.Interfaces
 {
     public interface IReservationRepository: IBaseRepository<Reservation>
     {
-    }
+        Task<IEnumerable<Reservation>> GetAllReservationAsync();
+        Task<Reservation> GetReservationByIdAsync(int id);
+    } 
 }

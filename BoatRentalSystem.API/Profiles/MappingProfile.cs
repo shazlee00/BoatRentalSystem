@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using BoatRentalSystem.API.ViewModels;
 using BoatRentalSystem.Application.Boat.ViewModels;
+using BoatRentalSystem.Application.BoatBooking.ViewModels;
 using BoatRentalSystem.Application.City.ViewModels;
+using BoatRentalSystem.Application.Reservation.ViewModels;
 using BoatRentalSystem.Application.Trip.ViewModels;
 using BoatRentalSystem.Core.Entities;
 
@@ -41,10 +43,27 @@ namespace BoatRentalSystem.API.Profiles
             CreateMap<Trip, UpdateTripDto>().ReverseMap();
 
 
+            CreateMap<Reservation, ReservationDto>().
+           ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status.ToString()))
+           .ForMember(dest=>dest.ReservationAdditions,opt=>opt.MapFrom(src=>src.ReservationAdditions)).ReverseMap();
+            CreateMap<Reservation, AddReservationDto>().ReverseMap();
+            CreateMap<Reservation, UpdateReservationDto>().ReverseMap();
+
+            CreateMap<ReservationAddition, ReservationAdditionDto>().ReverseMap();
+            CreateMap<ReservationAddition, AddReservationAdditionDto>().ReverseMap();
+           CreateMap<ReservationAddition, UpdateReservationAdditionDto>().ReverseMap();
 
 
 
+            CreateMap<BoatBooking, BoatBookingDto>().
+           ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status.ToString()))
+           .ForMember(dest => dest.BookingAdditions, opt => opt.MapFrom(src => src.BookingAdditions)).ReverseMap();
+            CreateMap<BoatBooking, AddBoatBookingDto>().ReverseMap();
+            CreateMap<BoatBooking, UpdateBoatBookingDto>().ReverseMap();
 
+            CreateMap<BookingAddition, BookingAdditionDto>().ReverseMap();
+            CreateMap<BookingAddition, AddBookingAdditionDto>().ReverseMap();
+            CreateMap<BookingAddition, UpdateBookingAdditionDto>().ReverseMap();
 
 
 

@@ -42,6 +42,13 @@ builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 builder.Services.AddScoped<IBoatRepository, BoatRepository>();
 builder.Services.AddScoped<ITripRepository, TripRepository>();
 builder.Services.AddScoped<IReservationRepository, ReservationRepository>();
+builder.Services.AddScoped<IBoatBookingRepository, BoatBookingRepository>();
+builder.Services.AddScoped<IBookingAdditionRepository, BookingAdditionRepository>();
+builder.Services.AddScoped<ICancellationRepository, CancellationRepository>();
+
+
+
+
 builder.Services.AddScoped<CityService>();
 builder.Services.AddScoped<CountryService>();
 builder.Services.AddScoped<PackageService>();
@@ -49,6 +56,9 @@ builder.Services.AddScoped<AdditionService>();
 builder.Services.AddScoped<BoatService>();
 builder.Services.AddScoped<TripService>();
 builder.Services.AddScoped<ReservationService>();
+builder.Services.AddScoped<BoatBookingService>();
+builder.Services.AddScoped<BookingAdditionService>();
+builder.Services.AddScoped<CancellationService>();
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 

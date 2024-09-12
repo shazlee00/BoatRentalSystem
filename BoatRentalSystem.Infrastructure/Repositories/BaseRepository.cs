@@ -58,6 +58,8 @@ namespace BoatRentalSystem.Infrastructure.Repositories
                 throw new InvalidOperationException("Not found");
             }
         }
+
+       
     }
 
 }

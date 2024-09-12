@@ -1,5 +1,9 @@
-﻿using BoatRentalSystem.Core.Interfaces;
+﻿using BoatRentalSystem.Application.BoatBooking.Query;
+using BoatRentalSystem.Application.City.Query;
+using BoatRentalSystem.Application.Reservation.Query;
+using BoatRentalSystem.Core.Interfaces;
 using BoatSystem.Core.Models;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -15,48 +19,40 @@ namespace BoatRentalSystem.API.Controllers
     {
         private readonly ICustomerRepository _customerRepository;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IMediator _mediator;
 
-        public CustomerController(ICustomerRepository customerRepository,UserManager<ApplicationUser> userManager)
+        public CustomerController(ICustomerRepository customerRepository,UserManager<ApplicationUser> userManager,IMediator mediator)
         {
             _customerRepository = customerRepository;
             _userManager = userManager;
+            _mediator = mediator;
         }
 
 
-        [HttpGet]
-        public async Task<IActionResult> GetCustomer()
+        [HttpGet("Reservation")]
+        [Authorize(Roles = "Customer")]
+        public async Task<IActionResult> GetReservation()
         {
-            var username = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var customerId = await _customerRepository.GetIdByUserIDAsync(User.FindFirst(c => c.Type == "uid")?.Value);
 
-            var userId=User.FindFirst(c=> c.Type == "uid")?.Value;
-
-            
-
-
-            // Get user email
-            var userEmail = User.FindFirst(ClaimTypes.Email)?.Value;
-
-            // Get user name
-            var userName = User.Identity.Name; // This could also be from ClaimTypes.Name
-
-            // Check if user is authenticated
-            var isAuthenticated = User.Identity.IsAuthenticated;
-
-            var customer=await _customerRepository.GetByUserIdAsync(userId);
-
-            return Ok(
-                new
-                {
-                   userId,
-                   userEmail,
-                   userName,
-                   isAuthenticated,
-                   customer
-                }
-                );
-
-
-
+            var query = new ListCustomerReservationQuery(customerId);
+            var result = await _mediator.Send(query);
+            return Ok(result);
         }
+
+        [HttpGet("Booking")]
+        [Authorize(Roles = "Customer")]
+        public async Task<IActionResult> GetBooking()
+        {
+            var customerId = await _customerRepository.GetIdByUserIDAsync(User.FindFirst(c => c.Type == "uid")?.Value);
+
+            var query = new ListCustomerBoatBookingQuery(customerId);
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
+
+
+
+
     }
 }
