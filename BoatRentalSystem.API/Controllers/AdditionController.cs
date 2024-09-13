@@ -4,6 +4,7 @@
     using BoatRentalSystem.API.ViewModels;
     using BoatRentalSystem.Application.Services;
     using BoatRentalSystem.Core.Entities;
+    using BoatSystem.Core.Models;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
@@ -45,6 +46,7 @@
 
         [HttpPost]
         [Authorize(Roles = "owner")]
+        [ApiExplorerSettings(GroupName = SwaggerDocsConstant.Owner)]
         public async Task<ActionResult> Post([FromBody] AddAdditionViewModel addAdditionViewModel)
         {
             var addition = _mapper.Map<Addition>(addAdditionViewModel);
@@ -54,6 +56,7 @@
 
         [HttpPut]
         [Authorize(Roles = "owner")]
+        [ApiExplorerSettings(GroupName = SwaggerDocsConstant.Owner)]
         public async Task<ActionResult> Put(AdditionViewModel additionViewModel)
         {
             var existingAddition = await _additionService.GetAdditionById(additionViewModel.Id);
@@ -68,6 +71,7 @@
         }
         [HttpDelete]
         [Authorize(Roles = "owner")]
+        [ApiExplorerSettings(GroupName = SwaggerDocsConstant.Owner)]
         public async Task<ActionResult> Delete(int id)
         {
             var existingAddition = await _additionService.GetAdditionById(id);

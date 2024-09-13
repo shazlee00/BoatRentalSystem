@@ -6,8 +6,8 @@
     public static class SwaggerDocsConstant
     {
         public const string Admin = "admin";
-        public const string Owner = "Owner";
-        public const string User = "user";
+        public const string Owner = "owner";
+        public const string Customer = "customer";
     }
 
 

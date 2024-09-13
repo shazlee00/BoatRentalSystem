@@ -7,6 +7,8 @@ using BoatRentalSystem.Application.BoatBooking.Query;
 using BoatRentalSystem.Application.Reservation.Query;
 using BoatRentalSystem.Application.Services;
 using BoatRentalSystem.Core.Interfaces;
+using BoatRentalSystem.Infrastructure.Repositories;
+using BoatSystem.Core.Models;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -16,6 +18,7 @@ namespace BoatRentalSystem.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [ApiExplorerSettings(GroupName = SwaggerDocsConstant.Customer)]
     public class OwnerController : ControllerBase
     {
         private readonly BoatService _boatService;
@@ -151,6 +154,25 @@ namespace BoatRentalSystem.API.Controllers
             return Ok(result);
         }
 
+
+        [HttpGet("WalletBalance")]
+        [Authorize(Roles = "owner")]
+        public async Task<IActionResult> GetWalletBalance()
+        {
+            var customer = await _ownerRepository.GetByUserIdAsync(User.FindFirst(c => c.Type == "uid")?.Value);
+
+
+
+            if (customer == null)
+            {
+                return NotFound();
+            }
+
+
+            return Ok(customer.WalletBalance);
+
+
+        }
 
 
     }

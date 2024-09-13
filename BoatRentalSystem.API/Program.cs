@@ -28,8 +28,9 @@ builder.Services.AddEndpointsApiExplorer();
 //builder.Services.AddSwaggerGen();
 builder.Services.AddSwaggerGen(options =>
 {
-    options.SwaggerDoc("user", new OpenApiInfo { Title = "User Api", Version = "v1" });
+    options.SwaggerDoc("customer", new OpenApiInfo { Title = "customer Api", Version = "v1" });
     options.SwaggerDoc("admin", new OpenApiInfo { Title = "Admin Api", Version = "v1" });
+    options.SwaggerDoc("owner", new OpenApiInfo { Title = "Owner Api", Version = "v1" });
 });
 
 
@@ -135,7 +136,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI(c =>
     {
         c.SwaggerEndpoint($"/swagger/{SwaggerDocsConstant.Admin}/swagger.json", "Admin Api");
-        c.SwaggerEndpoint($"/swagger/{SwaggerDocsConstant.User}/swagger.json", "User Api");
+        c.SwaggerEndpoint($"/swagger/{SwaggerDocsConstant.Customer}/swagger.json", "Customer Api");
+        c.SwaggerEndpoint($"/swagger/{SwaggerDocsConstant.Owner}/swagger.json", "Owner Api");
     });
 
 }

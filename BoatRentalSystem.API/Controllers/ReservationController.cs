@@ -7,6 +7,7 @@ using BoatRentalSystem.Application.Reservation.ViewModels;
 using BoatRentalSystem.Application.Services;
 using BoatRentalSystem.Core.Entities;
 using BoatRentalSystem.Core.Interfaces;
+using BoatSystem.Core.Models;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -37,6 +38,7 @@ namespace BoatRentalSystem.API.Controllers
         }
         [HttpGet]
         [Authorize(Roles = "admin")]
+        [ApiExplorerSettings(GroupName = SwaggerDocsConstant.Admin)]
         public async Task<IActionResult> Get()
         {
             var query = new ListReservationsQuery();
@@ -47,6 +49,7 @@ namespace BoatRentalSystem.API.Controllers
 
         [HttpGet("{id}")]
         [Authorize(Roles = "admin")]
+        [ApiExplorerSettings(GroupName = SwaggerDocsConstant.Admin)]
         public async Task<IActionResult> Get(int id)
         {
             var query = new GetReservationQuery(id);
@@ -88,6 +91,7 @@ namespace BoatRentalSystem.API.Controllers
         [HttpPut("{reservationId}/UpdateStatus")]
         [Authorize(Roles = "owner")]
         [Authorize(Roles = "admin")]
+        [ApiExplorerSettings(GroupName = SwaggerDocsConstant.Admin)]
         public async Task<IActionResult> UpdateStatus(int reservationId, ReservationStatus reservationStatus)
         {
             var command = new UpdateReservationStatusCommand(reservationStatus, reservationId);
@@ -96,7 +100,7 @@ namespace BoatRentalSystem.API.Controllers
         }
 
         [HttpPost("{reservationId}/Payment")]
-       // [Authorize]
+        [Authorize]
         public async Task<IActionResult> Payment(int reservationId)
         {
             var command = new AddReservationPaymentCommand(reservationId);

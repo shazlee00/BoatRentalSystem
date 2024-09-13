@@ -5,6 +5,7 @@ using BoatRentalSystem.Application.Boat.Query;
 using BoatRentalSystem.Application.Boat.ViewModels;
 using BoatRentalSystem.Application.Services;
 using BoatRentalSystem.Core.Interfaces;
+using BoatSystem.Core.Models;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -36,6 +37,7 @@ namespace BoatRentalSystem.API.Controllers
         
         [Authorize(Roles = "admin")]
         [HttpGet]
+        [ApiExplorerSettings(GroupName = SwaggerDocsConstant.Admin)]
         public async Task<IActionResult> Get()
         {
             var query = new ListBoatsQuery();
@@ -45,6 +47,7 @@ namespace BoatRentalSystem.API.Controllers
 
         [Authorize(Roles = "admin")]
         [HttpGet("{id}")]
+        [ApiExplorerSettings(GroupName = SwaggerDocsConstant.Admin)]
         public async Task<IActionResult> Get(int id)
         {
             var query = new GetBoatQuery(id);
@@ -71,6 +74,7 @@ namespace BoatRentalSystem.API.Controllers
 
         [Authorize(Roles = "owner")]
         [HttpPost]
+        [ApiExplorerSettings(GroupName = SwaggerDocsConstant.Owner)]
         public async Task<ActionResult> Post([FromBody] AddBoatDto boat)
         {
 
@@ -89,6 +93,7 @@ namespace BoatRentalSystem.API.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPost("status")]
+        [ApiExplorerSettings(GroupName = SwaggerDocsConstant.Admin)]
         public async Task<ActionResult> UpdateBoatStatus(VerifyBoatCommand command)
         {
             if (command == null)

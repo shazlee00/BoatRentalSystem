@@ -15,6 +15,8 @@ namespace BoatRentalSystem.API.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
+    [ApiExplorerSettings(GroupName = SwaggerDocsConstant.Customer)]
+
     public class CustomerController : ControllerBase
     {
         private readonly ICustomerRepository _customerRepository;
@@ -50,6 +52,28 @@ namespace BoatRentalSystem.API.Controllers
             var result = await _mediator.Send(query);
             return Ok(result);
         }
+
+
+        [HttpGet("WalletBalance")]
+        [Authorize(Roles = "Customer")]
+        public async Task<IActionResult> GetWalletBalance()
+        {
+            var customer = await _customerRepository.GetByUserIdAsync(User.FindFirst(c => c.Type == "uid")?.Value);
+
+         
+
+            if (customer == null)
+            {
+                return NotFound();
+            }
+
+
+            return Ok(customer.WalletBalance);
+
+
+        }
+
+
 
 
 

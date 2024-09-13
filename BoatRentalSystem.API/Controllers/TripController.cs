@@ -5,6 +5,7 @@ using BoatRentalSystem.Application.Trip.Command.Update;
 using BoatRentalSystem.Application.Trip.Query;
 using BoatRentalSystem.Application.Trip.ViewModels;
 using BoatRentalSystem.Core.Interfaces;
+using BoatSystem.Core.Models;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -59,6 +60,7 @@ namespace BoatRentalSystem.API.Controllers
 
         [HttpPost]
        [Authorize(Roles = "owner")]
+        [ApiExplorerSettings(GroupName = SwaggerDocsConstant.Owner)]
         public async Task<IActionResult> Post([FromBody] AddTripDto trip)
         {
             var command = new AddTripCommand(trip);
@@ -68,6 +70,7 @@ namespace BoatRentalSystem.API.Controllers
 
         [HttpPut]
        [Authorize(Roles = "owner")]
+        [ApiExplorerSettings(GroupName = SwaggerDocsConstant.Owner)]
         public async Task<IActionResult> Put([FromBody] UpdateTripDto trip)
         {
             var command = new UpdateTripCommand(trip);
@@ -78,6 +81,7 @@ namespace BoatRentalSystem.API.Controllers
 
        [HttpDelete]
        [Authorize(Roles = "owner")]
+        [ApiExplorerSettings(GroupName = SwaggerDocsConstant.Owner)]
         public async Task<IActionResult> Delete(int id)
         {
            var trip = await _tripService.GetTripById(id);

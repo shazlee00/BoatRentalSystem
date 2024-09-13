@@ -10,6 +10,7 @@ using BoatRentalSystem.Application.Reservation.ViewModels;
 using BoatRentalSystem.Application.Services;
 using BoatRentalSystem.Core.Entities;
 using BoatRentalSystem.Core.Interfaces;
+using BoatSystem.Core.Models;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -39,6 +40,7 @@ namespace BoatRentalSystem.API.Controllers
         }
         [HttpGet]
         [Authorize(Roles = "admin")]
+        [ApiExplorerSettings(GroupName = SwaggerDocsConstant.Admin)]
         public async Task<IActionResult> Get()
         {
             var query = new ListBoatBookingsQuery   ();
@@ -48,6 +50,7 @@ namespace BoatRentalSystem.API.Controllers
 
         [HttpGet("{id}")]
         [Authorize(Roles = "admin")]
+        [ApiExplorerSettings(GroupName = SwaggerDocsConstant.Admin)]
         public async Task<IActionResult> Get(int id)
         {
             var query = new GetBoatBookingQuery(id);
@@ -86,6 +89,8 @@ namespace BoatRentalSystem.API.Controllers
         [HttpPut("{boatBookingId}/UpdateStatus")]
         [Authorize(Roles = "owner")]
         [Authorize(Roles = "admin")]
+       
+
         public async Task<IActionResult> UpdateStatus(int boatBookingId, BoatBookingStatus boatBookingStatus)
         {
             var command = new UpdateBoatBookingStatusCommand(boatBookingStatus, boatBookingId);
