@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BoatRentalSystem.Application.Payment.Command;
 using BoatRentalSystem.Application.Reservation.Command.Add;
 using BoatRentalSystem.Application.Reservation.Command.Update;
 using BoatRentalSystem.Application.Reservation.Query;
@@ -94,7 +95,49 @@ namespace BoatRentalSystem.API.Controllers
             return Ok(result);
         }
 
-         
+        [HttpPost("{reservationId}/Payment")]
+       // [Authorize]
+        public async Task<IActionResult> Payment(int reservationId)
+        {
+            var command = new AddReservationPaymentCommand(reservationId);
+            try
+            {
+                var result = await _mediator.Send(command);
+                return Ok(result);
+            }
+            catch
+            {
+                return BadRequest();
+            }
+                 
+        }
+
+        [HttpPost("{reservationId}/Cancel")]
+        [Authorize]
+        public async Task<IActionResult> CancelReservation(int reservationId)
+        {
+            var command = new CancelReservationCommand(reservationId);
+            try
+            {
+                var result = await _mediator.Send(command);
+                return Ok(result);
+            }
+            catch
+            {
+                return BadRequest();
+            }
+
+        }
+
+
+
+
+
+
+
+
+
+
 
 
     }

@@ -1,31 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BoatRentalSystem.Core.Entities;
 
-namespace BoatRentalSystem.Core.Entities
+namespace BoatRentalSystem.Application.Payment.ViewModels
 {
-    public class Cancellation
+    public class CancellationDto
     {
         public int CancellationId { get; set; }
 
         public int CustomerId { get; set; }
-        public Customer Customer { get; set; }
+  
 
         public int? ReservationId { get; set; }
-        public Reservation? Reservation     { get; set; }
-
+    
         public int? BoatBookingId { get; set; }
-        public BoatBooking? BoatBooking { get; set; }
+     
 
         public DateTime CreatedAt { get; set; } = DateTime.Now;
-        
+
         public double RefundAmount { get; set; } = 0;
 
         public DateTime CancellationDate { get; set; }
-
-
 
 
     }

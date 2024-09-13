@@ -14,7 +14,7 @@ namespace BoatRentalSystem.Core.Entities
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
-        public decimal WalletBalance { get; set; } = 0.0m;
+        public double WalletBalance { get; set; } = 0.0;
         
         public DateTime CreatedAt { get; set; }=DateTime.Now;
         public DateTime UpdatedAt { get; set; }

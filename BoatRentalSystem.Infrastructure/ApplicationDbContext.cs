@@ -43,6 +43,10 @@ namespace BoatRentalSystem.Infrastructure
 
        public DbSet<BookingAddition> bookingAdditions { get; set; }
 
+
+        public DbSet<ReservationPayment> ReservationPayments { get; set; } // <ReservationPayment>
+        public DbSet<BookingPayment> BookingPayments { get; set; } // <BookingPayment>
+
         public DbSet<Cancellation> Cancellations { get; set; }
 
         

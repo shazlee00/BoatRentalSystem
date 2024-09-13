@@ -3,6 +3,7 @@ using BoatRentalSystem.Application.BoatBooking.Command.Add;
 using BoatRentalSystem.Application.BoatBooking.Command.Update;
 using BoatRentalSystem.Application.BoatBooking.Query;
 using BoatRentalSystem.Application.BoatBooking.ViewModels;
+using BoatRentalSystem.Application.Payment.Command;
 using BoatRentalSystem.Application.Reservation.Command.Add;
 using BoatRentalSystem.Application.Reservation.Command.Update;
 using BoatRentalSystem.Application.Reservation.ViewModels;
@@ -92,7 +93,49 @@ namespace BoatRentalSystem.API.Controllers
             return Ok(result);
         }
 
+        [HttpPost("{bookingId}/Payment")]
+        [Authorize]
+        public async Task<IActionResult> Payment(int bookingId)
+        {
+            var command = new AddBoatBookingPaymentCommand(bookingId);
 
+            try
+            {
+                var result = await _mediator.Send(command);
+
+                if (result == null)
+                {
+                    return NotFound();
+                }
+                return Ok(result);
+
+            }
+            catch
+            {
+                return BadRequest();
+            }
+
+
+
+
+        }
+
+        [HttpPost("{bookingId}/Cancel")]
+       [Authorize]
+        public async Task<IActionResult> CancelReservation(int bookingId)
+        {
+            var command = new CancelBoatBookingCommand(bookingId);
+            try
+            {
+                var result = await _mediator.Send(command);
+                return Ok(result);
+            }
+            catch
+            {
+                return BadRequest();
+            }
+
+        }
 
 
 

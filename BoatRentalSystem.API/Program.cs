@@ -46,6 +46,9 @@ builder.Services.AddScoped<IBoatBookingRepository, BoatBookingRepository>();
 builder.Services.AddScoped<IBookingAdditionRepository, BookingAdditionRepository>();
 builder.Services.AddScoped<ICancellationRepository, CancellationRepository>();
 
+builder.Services.AddScoped<IPaymentTransactionRepository, PaymentTransactionRepository>();
+builder.Services.AddScoped<IReservationPaymentRepository, ReservationPaymentRepository>();
+builder.Services.AddScoped<IBookingPaymentRepository, BookingPaymentRepository>();
 
 
 
