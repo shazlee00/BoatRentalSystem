@@ -93,7 +93,7 @@ BoatRentalSystem is a web API designed to manage boat rental operations. It prov
 
 ### Usage
 
-- **Swagger UI**: Navigate to `https://localhost:5001/swagger` to explore the API endpoints.
+- **Swagger UI**: Navigate to `https://localhost:7155/swagger/index.html` to explore the API endpoints.
 - **Postman**: Import the provided Postman collection to test the API.
 
 ## Project Structure
