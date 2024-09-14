@@ -24,6 +24,7 @@
 
 
         [HttpPost("register-owner")]
+        [ApiExplorerSettings(GroupName = SwaggerDocsConstant.Owner)]
         public async Task<IActionResult> RegisterOwner(RegisterOwnerCommand command)
         {
             var result = await _mediator.Send(command);
@@ -34,6 +35,7 @@
             return Ok(result);
         }
         [HttpPost("register-customer")]
+        [ApiExplorerSettings(GroupName = SwaggerDocsConstant.Customer)]
         public async Task<IActionResult> RegisterCustomer(RegisterCustomerCommand command)
         {
             var result = await _mediator.Send(command);
@@ -59,6 +61,7 @@
 
 
         [HttpPost("verify-owner")]
+        [ApiExplorerSettings(GroupName = SwaggerDocsConstant.Admin)]
         public async Task<IActionResult> VerifyOwner(VerifyOwnerCommand command)
         {
             var result = await _mediator.Send(command);
