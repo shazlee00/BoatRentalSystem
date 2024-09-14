@@ -1,0 +1,2609 @@
+{
+	"info": {
+		"_postman_id": "e51ad4fa-ae86-4214-826e-a065de5fb643",
+		"name": "customer Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23288450"
+	},
+	"item": [
+		{
+			"name": "api",
+			"item": [
+				{
+					"name": "Addition",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "/api/Addition/:id",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/Addition/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Addition",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "<integer>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Success",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/Addition/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Addition",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"price\": \"<double>\"\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "/api/Addition",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "text/plain"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/Addition",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Addition"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/Addition",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Addition"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"price\": \"<double>\"\n  },\n  {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"price\": \"<double>\"\n  }\n]"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "register-customer",
+							"item": [
+								{
+									"name": "/api/Auth/register-customer",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"model\": {\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"userName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"password\": \"<string>\"\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Auth/register-customer",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Auth",
+												"register-customer"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Success",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"model\": {\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"userName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"password\": \"<string>\"\n  }\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/Auth/register-customer",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Auth",
+														"register-customer"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "login",
+							"item": [
+								{
+									"name": "/api/Auth/login",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Auth/login",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Auth",
+												"login"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Success",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"email\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/Auth/login",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Auth",
+														"login"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Boat",
+					"item": [
+						{
+							"name": "Available",
+							"item": [
+								{
+									"name": "/api/Boat/Available",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Boat/Available",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Boat",
+												"Available"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Success",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/Boat/Available",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Boat",
+														"Available"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Booking",
+					"item": [
+						{
+							"name": "{boatBookingId}",
+							"item": [
+								{
+									"name": "UpdateStatus",
+									"item": [
+										{
+											"name": "/api/Booking/:boatBookingId/UpdateStatus",
+											"request": {
+												"method": "PUT",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/Booking/:boatBookingId/UpdateStatus?boatBookingStatus=0",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Booking",
+														":boatBookingId",
+														"UpdateStatus"
+													],
+													"query": [
+														{
+															"key": "boatBookingStatus",
+															"value": "0"
+														}
+													],
+													"variable": [
+														{
+															"key": "boatBookingId",
+															"value": "<integer>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "Success",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/api/Booking/:boatBookingId/UpdateStatus?boatBookingStatus=0",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"Booking",
+																":boatBookingId",
+																"UpdateStatus"
+															],
+															"query": [
+																{
+																	"key": "boatBookingStatus",
+																	"value": "0"
+																}
+															],
+															"variable": [
+																{
+																	"key": "boatBookingId"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "{bookingId}",
+							"item": [
+								{
+									"name": "Payment",
+									"item": [
+										{
+											"name": "/api/Booking/:bookingId/Payment",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/Booking/:bookingId/Payment",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Booking",
+														":bookingId",
+														"Payment"
+													],
+													"variable": [
+														{
+															"key": "bookingId",
+															"value": "<integer>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "Success",
+													"originalRequest": {
+														"method": "POST",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/api/Booking/:bookingId/Payment",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"Booking",
+																":bookingId",
+																"Payment"
+															],
+															"variable": [
+																{
+																	"key": "bookingId"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "Cancel",
+									"item": [
+										{
+											"name": "/api/Booking/:bookingId/Cancel",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/Booking/:bookingId/Cancel",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Booking",
+														":bookingId",
+														"Cancel"
+													],
+													"variable": [
+														{
+															"key": "bookingId",
+															"value": "<integer>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "Success",
+													"originalRequest": {
+														"method": "POST",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/api/Booking/:bookingId/Cancel",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"Booking",
+																":bookingId",
+																"Cancel"
+															],
+															"variable": [
+																{
+																	"key": "bookingId"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "/api/Booking",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"customerId\": \"<integer>\",\n  \"boatId\": \"<integer>\",\n  \"bookingDate\": \"<dateTime>\",\n  \"durationHours\": \"<integer>\",\n  \"bookingAdditions\": [\n    {\n      \"additionId\": \"<integer>\",\n      \"quantity\": \"<integer>\"\n    },\n    {\n      \"additionId\": \"<integer>\",\n      \"quantity\": \"<integer>\"\n    }\n  ]\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/Booking",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Booking"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"customerId\": \"<integer>\",\n  \"boatId\": \"<integer>\",\n  \"bookingDate\": \"<dateTime>\",\n  \"durationHours\": \"<integer>\",\n  \"bookingAdditions\": [\n    {\n      \"additionId\": \"<integer>\",\n      \"quantity\": \"<integer>\"\n    },\n    {\n      \"additionId\": \"<integer>\",\n      \"quantity\": \"<integer>\"\n    }\n  ]\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Booking",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Booking"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "/api/Booking",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"boatBookingId\": \"<integer>\",\n  \"customerId\": \"<integer>\",\n  \"boatId\": \"<integer>\",\n  \"bookingDate\": \"<dateTime>\",\n  \"durationHours\": \"<integer>\",\n  \"totalPrice\": \"<double>\",\n  \"status\": \"<string>\",\n  \"canceledAt\": \"<dateTime>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\",\n  \"bookingAdditions\": [\n    {\n      \"bookingAdditionId\": \"<integer>\",\n      \"boatBookingId\": \"<integer>\",\n      \"additionId\": \"<integer>\",\n      \"quantity\": \"<integer>\",\n      \"totalPrice\": \"<double>\",\n      \"createdAt\": \"<dateTime>\"\n    },\n    {\n      \"bookingAdditionId\": \"<integer>\",\n      \"boatBookingId\": \"<integer>\",\n      \"additionId\": \"<integer>\",\n      \"quantity\": \"<integer>\",\n      \"totalPrice\": \"<double>\",\n      \"createdAt\": \"<dateTime>\"\n    }\n  ]\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/Booking",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Booking"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"boatBookingId\": \"<integer>\",\n  \"customerId\": \"<integer>\",\n  \"boatId\": \"<integer>\",\n  \"bookingDate\": \"<dateTime>\",\n  \"durationHours\": \"<integer>\",\n  \"totalPrice\": \"<double>\",\n  \"status\": \"<string>\",\n  \"canceledAt\": \"<dateTime>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\",\n  \"bookingAdditions\": [\n    {\n      \"bookingAdditionId\": \"<integer>\",\n      \"boatBookingId\": \"<integer>\",\n      \"additionId\": \"<integer>\",\n      \"quantity\": \"<integer>\",\n      \"totalPrice\": \"<double>\",\n      \"createdAt\": \"<dateTime>\"\n    },\n    {\n      \"bookingAdditionId\": \"<integer>\",\n      \"boatBookingId\": \"<integer>\",\n      \"additionId\": \"<integer>\",\n      \"quantity\": \"<integer>\",\n      \"totalPrice\": \"<double>\",\n      \"createdAt\": \"<dateTime>\"\n    }\n  ]\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Booking",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Booking"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "City",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "/api/City/:id",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/City/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"City",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "<integer>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Success",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/City/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"City",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": \"<integer>\",\n  \"name\": \"<string>\"\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "/api/City",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "text/plain"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/City",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"City"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/City",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"City"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\"\n  },\n  {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\"\n  }\n]"
+								}
+							]
+						},
+						{
+							"name": "/api/City",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/City",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"City"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"name\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/City",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"City"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "/api/City",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": \"<integer>\",\n  \"name\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/City",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"City"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"<integer>\",\n  \"name\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/City",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"City"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "/api/City",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/City?id=<integer>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"City"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "<integer>"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/City?id=<integer>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"City"
+											],
+											"query": [
+												{
+													"key": "id",
+													"value": "<integer>"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Customer",
+					"item": [
+						{
+							"name": "Reservation",
+							"item": [
+								{
+									"name": "/api/Customer/Reservation",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Customer/Reservation",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Customer",
+												"Reservation"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Success",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/Customer/Reservation",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Customer",
+														"Reservation"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Booking",
+							"item": [
+								{
+									"name": "/api/Customer/Booking",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Customer/Booking",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Customer",
+												"Booking"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Success",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/Customer/Booking",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Customer",
+														"Booking"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "WalletBalance",
+							"item": [
+								{
+									"name": "/api/Customer/WalletBalance",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Customer/WalletBalance",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Customer",
+												"WalletBalance"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Success",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/Customer/WalletBalance",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Customer",
+														"WalletBalance"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Owner",
+					"item": [
+						{
+							"name": "{ownerId}",
+							"item": [
+								{
+									"name": "boat",
+									"item": [
+										{
+											"name": "{boatId}",
+											"item": [
+												{
+													"name": "/api/Owner/:ownerId/boat/:boatId",
+													"request": {
+														"method": "GET",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/api/Owner/:ownerId/boat/:boatId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"Owner",
+																":ownerId",
+																"boat",
+																":boatId"
+															],
+															"variable": [
+																{
+																	"key": "ownerId",
+																	"value": "<integer>",
+																	"description": "(Required) "
+																},
+																{
+																	"key": "boatId",
+																	"value": "<integer>",
+																	"description": "(Required) "
+																}
+															]
+														}
+													},
+													"response": [
+														{
+															"name": "Success",
+															"originalRequest": {
+																"method": "GET",
+																"header": [],
+																"url": {
+																	"raw": "{{baseUrl}}/api/Owner/:ownerId/boat/:boatId",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"Owner",
+																		":ownerId",
+																		"boat",
+																		":boatId"
+																	],
+																	"variable": [
+																		{
+																			"key": "ownerId"
+																		},
+																		{
+																			"key": "boatId"
+																		}
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "text",
+															"header": [],
+															"cookie": [],
+															"body": ""
+														}
+													]
+												}
+											]
+										},
+										{
+											"name": "/api/Owner/:ownerId/boat",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/Owner/:ownerId/boat",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Owner",
+														":ownerId",
+														"boat"
+													],
+													"variable": [
+														{
+															"key": "ownerId",
+															"value": "<integer>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "Success",
+													"originalRequest": {
+														"method": "GET",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/api/Owner/:ownerId/boat",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"Owner",
+																":ownerId",
+																"boat"
+															],
+															"variable": [
+																{
+																	"key": "ownerId"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												}
+											]
+										},
+										{
+											"name": "/api/Owner/:ownerId/boat",
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"boat\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"capacity\": \"<integer>\",\n    \"reservationPrice\": \"<double>\",\n    \"ownerId\": \"<integer>\"\n  }\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/Owner/:ownerId/boat",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Owner",
+														":ownerId",
+														"boat"
+													],
+													"variable": [
+														{
+															"key": "ownerId",
+															"value": "<integer>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "Success",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"boat\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"capacity\": \"<integer>\",\n    \"reservationPrice\": \"<double>\",\n    \"ownerId\": \"<integer>\"\n  }\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/Owner/:ownerId/boat",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"Owner",
+																":ownerId",
+																"boat"
+															],
+															"variable": [
+																{
+																	"key": "ownerId"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												}
+											]
+										},
+										{
+											"name": "/api/Owner/:ownerId/boat",
+											"request": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/Owner/:ownerId/boat?boatId=<integer>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Owner",
+														":ownerId",
+														"boat"
+													],
+													"query": [
+														{
+															"key": "boatId",
+															"value": "<integer>"
+														}
+													],
+													"variable": [
+														{
+															"key": "ownerId",
+															"value": "<integer>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "Success",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/api/Owner/:ownerId/boat?boatId=<integer>",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"Owner",
+																":ownerId",
+																"boat"
+															],
+															"query": [
+																{
+																	"key": "boatId",
+																	"value": "<integer>"
+																}
+															],
+															"variable": [
+																{
+																	"key": "ownerId"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "{OwnerId}",
+							"item": [
+								{
+									"name": "boat",
+									"item": [
+										{
+											"name": "/api/Owner/:OwnerId/boat",
+											"request": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"boatId\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"capacity\": \"<integer>\",\n  \"reservationPrice\": \"<double>\",\n  \"ownerId\": \"<integer>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/Owner/:OwnerId/boat",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Owner",
+														":OwnerId",
+														"boat"
+													],
+													"variable": [
+														{
+															"key": "OwnerId"
+														},
+														{
+															"key": "ownerId",
+															"value": "<integer>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "Success",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"boatId\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"capacity\": \"<integer>\",\n  \"reservationPrice\": \"<double>\",\n  \"ownerId\": \"<integer>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/Owner/:OwnerId/boat",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"Owner",
+																":OwnerId",
+																"boat"
+															],
+															"variable": [
+																{
+																	"key": "OwnerId"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Reservation",
+							"item": [
+								{
+									"name": "/api/Owner/Reservation",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Owner/Reservation",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Owner",
+												"Reservation"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Success",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/Owner/Reservation",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Owner",
+														"Reservation"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Booking",
+							"item": [
+								{
+									"name": "/api/Owner/Booking",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Owner/Booking",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Owner",
+												"Booking"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Success",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/Owner/Booking",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Owner",
+														"Booking"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "WalletBalance",
+							"item": [
+								{
+									"name": "/api/Owner/WalletBalance",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Owner/WalletBalance",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Owner",
+												"WalletBalance"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Success",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/Owner/WalletBalance",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Owner",
+														"WalletBalance"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Package",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "/api/Package/:id",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/Package/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Package",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "<integer>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Success",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/Package/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Package",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": \"<integer>\",\n  \"name\": \"<string>\"\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "/api/Package",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "text/plain"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/Package",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Package"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/Package",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Package"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\"\n  },\n  {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\"\n  }\n]"
+								}
+							]
+						},
+						{
+							"name": "/api/Package",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/Package",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Package"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"name\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Package",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Package"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "/api/Package",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": \"<integer>\",\n  \"name\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/Package",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Package"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"<integer>\",\n  \"name\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Package",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Package"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "/api/Package",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/Package?id=<integer>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Package"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "<integer>"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Package?id=<integer>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Package"
+											],
+											"query": [
+												{
+													"key": "id",
+													"value": "<integer>"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Reservation",
+					"item": [
+						{
+							"name": "{reservationId}",
+							"item": [
+								{
+									"name": "Payment",
+									"item": [
+										{
+											"name": "/api/Reservation/:reservationId/Payment",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/Reservation/:reservationId/Payment",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Reservation",
+														":reservationId",
+														"Payment"
+													],
+													"variable": [
+														{
+															"key": "reservationId",
+															"value": "<integer>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "Success",
+													"originalRequest": {
+														"method": "POST",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/api/Reservation/:reservationId/Payment",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"Reservation",
+																":reservationId",
+																"Payment"
+															],
+															"variable": [
+																{
+																	"key": "reservationId"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "Cancel",
+									"item": [
+										{
+											"name": "/api/Reservation/:reservationId/Cancel",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/Reservation/:reservationId/Cancel",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Reservation",
+														":reservationId",
+														"Cancel"
+													],
+													"variable": [
+														{
+															"key": "reservationId",
+															"value": "<integer>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "Success",
+													"originalRequest": {
+														"method": "POST",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/api/Reservation/:reservationId/Cancel",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"Reservation",
+																":reservationId",
+																"Cancel"
+															],
+															"variable": [
+																{
+																	"key": "reservationId"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "/api/Reservation",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"customerId\": \"<integer>\",\n  \"tripId\": \"<integer>\",\n  \"boatId\": \"<integer>\",\n  \"numberOfPeople\": \"<integer>\",\n  \"createdAt\": \"<dateTime>\",\n  \"reservationAdditions\": [\n    {\n      \"additionId\": \"<integer>\",\n      \"quantity\": \"<integer>\"\n    },\n    {\n      \"additionId\": \"<integer>\",\n      \"quantity\": \"<integer>\"\n    }\n  ]\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/Reservation",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Reservation"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"customerId\": \"<integer>\",\n  \"tripId\": \"<integer>\",\n  \"boatId\": \"<integer>\",\n  \"numberOfPeople\": \"<integer>\",\n  \"createdAt\": \"<dateTime>\",\n  \"reservationAdditions\": [\n    {\n      \"additionId\": \"<integer>\",\n      \"quantity\": \"<integer>\"\n    },\n    {\n      \"additionId\": \"<integer>\",\n      \"quantity\": \"<integer>\"\n    }\n  ]\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Reservation",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Reservation"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "/api/Reservation",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"reservationId\": \"<integer>\",\n  \"numberOfPeople\": \"<integer>\",\n  \"totalPrice\": \"<double>\",\n  \"createdAt\": \"<dateTime>\",\n  \"reservationAdditions\": [\n    {\n      \"reservationAdditionId\": \"<integer>\",\n      \"additionId\": \"<integer>\",\n      \"quantity\": \"<integer>\"\n    },\n    {\n      \"reservationAdditionId\": \"<integer>\",\n      \"additionId\": \"<integer>\",\n      \"quantity\": \"<integer>\"\n    }\n  ]\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/Reservation",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Reservation"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"reservationId\": \"<integer>\",\n  \"numberOfPeople\": \"<integer>\",\n  \"totalPrice\": \"<double>\",\n  \"createdAt\": \"<dateTime>\",\n  \"reservationAdditions\": [\n    {\n      \"reservationAdditionId\": \"<integer>\",\n      \"additionId\": \"<integer>\",\n      \"quantity\": \"<integer>\"\n    },\n    {\n      \"reservationAdditionId\": \"<integer>\",\n      \"additionId\": \"<integer>\",\n      \"quantity\": \"<integer>\"\n    }\n  ]\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Reservation",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Reservation"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Trip",
+					"item": [
+						{
+							"name": "available-trips",
+							"item": [
+								{
+									"name": "/api/Trip/available-trips",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Trip/available-trips",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Trip",
+												"available-trips"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Success",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/Trip/available-trips",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Trip",
+														"available-trips"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "/api/Trip/:id",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Trip/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Trip",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "<integer>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Success",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/Trip/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Trip",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "/api/Trip",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/Trip",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Trip"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Trip",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Trip"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "WeatherForecast",
+			"item": [
+				{
+					"name": "Get Weather Forecast",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/WeatherForecast",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"WeatherForecast"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "text/plain"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/WeatherForecast",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"WeatherForecast"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"date\": {\n      \"year\": \"<integer>\",\n      \"month\": \"<integer>\",\n      \"day\": \"<integer>\",\n      \"dayOfWeek\": 1,\n      \"dayOfYear\": \"<integer>\",\n      \"dayNumber\": \"<integer>\"\n    },\n    \"temperatureC\": \"<integer>\",\n    \"temperatureF\": \"<integer>\",\n    \"summary\": \"<string>\"\n  },\n  {\n    \"date\": {\n      \"year\": \"<integer>\",\n      \"month\": \"<integer>\",\n      \"day\": \"<integer>\",\n      \"dayOfWeek\": 5,\n      \"dayOfYear\": \"<integer>\",\n      \"dayNumber\": \"<integer>\"\n    },\n    \"temperatureC\": \"<integer>\",\n    \"temperatureF\": \"<integer>\",\n    \"summary\": \"<string>\"\n  }\n]"
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "/"
+		}
+	]
+}
