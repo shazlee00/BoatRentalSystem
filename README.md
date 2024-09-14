@@ -10,13 +10,6 @@ BoatRentalSystem is a web API designed to manage boat rental operations. It prov
 - **Customer Management**: Manage customer details and their rental history.
 - **Rental Operations**: Create, update, and manage boat rentals.
 
-
-
-
-
-/////////////////////////////////////
-Sure! Here's the updated README file with the formatted features for Admin, Owner, and Customer roles:
-
 ---
 
 # BoatRentalSystem Web API
